@@ -1,0 +1,7 @@
+spring:
+    application:
+      name: dictionary
+    profiles:
+      active: dev
+    jpa:
+      open-in-view: false
