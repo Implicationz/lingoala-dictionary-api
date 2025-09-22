@@ -1,9 +1,9 @@
-name: Deploy Lingoala Profile API
+name: Deploy Lingoala Dictionary API
 
 on:
   push:
     branches:
-      - main
+      - master
   workflow_dispatch:
 
 jobs:
