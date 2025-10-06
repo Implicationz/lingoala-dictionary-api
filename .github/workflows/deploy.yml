@@ -45,6 +45,6 @@ jobs:
             docker pull ghcr.io/implicationz/lingoala-dictionary-api:latest
       
             echo "Restarting systemd service..."
-            sudo systemctl restart lingoala-dictionary-api
-      
+            sudo systemctl restart lingoala-api@lingoala-dictionary-api            
+            
             echo "Deployment finished."

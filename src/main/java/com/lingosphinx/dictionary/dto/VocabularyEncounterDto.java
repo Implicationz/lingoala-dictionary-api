@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class VocabularyEncounterDto {
     private Long id;
     private VocabularyEntryDto entry;
+    private VocabularySourceDto source;
     private WordFormDto wordForm;
     private String text;
 }

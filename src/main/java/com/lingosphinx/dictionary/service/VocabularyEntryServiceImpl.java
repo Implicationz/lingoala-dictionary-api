@@ -8,6 +8,7 @@ import com.lingosphinx.dictionary.exception.ResourceNotFoundException;
 import com.lingosphinx.dictionary.mapper.VocabularyEntryMapper;
 import com.lingosphinx.dictionary.repository.LexemeRepository;
 import com.lingosphinx.dictionary.repository.VocabularyEntryRepository;
+import com.lingosphinx.dictionary.repository.VocabularySourceRepository;
 import com.lingosphinx.dictionary.repository.WordFormRepository;
 import com.lingosphinx.dictionary.utility.EntitySyncUtils;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-;
 
 @Service
 @RequiredArgsConstructor
@@ -26,6 +26,7 @@ import java.util.List;
 public class VocabularyEntryServiceImpl implements VocabularyEntryService {
 
     private final VocabularyEntryRepository vocabularyEntryRepository;
+    private final VocabularySourceRepository vocabularySourceRepository;
     private final LexemeRepository lexemeRepository;
     private final WordFormRepository wordFormRepository;
     private final VocabularyEntryMapper vocabularyEntryMapper;
@@ -70,6 +71,7 @@ public class VocabularyEntryServiceImpl implements VocabularyEntryService {
                 (dto, entity) -> {
                     vocabularyEntryMapper.updateEntityFromDto(dto, entity);
                     entity.setWordForm(wordFormRepository.getReferenceById(dto.getWordForm().getId()));
+                    entity.setSource(vocabularySourceRepository.getReferenceById(dto.getSource().getId()));
                 }
         );
         vocabularyEntryRepository.flush();

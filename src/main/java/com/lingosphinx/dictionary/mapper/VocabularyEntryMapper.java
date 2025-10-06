@@ -32,11 +32,21 @@ public interface VocabularyEntryMapper {
     @Mapping(target = "entry", ignore = true)
     VocabularyEncounter toEntity(VocabularyEncounterDto vocabularyEncounterDto);
 
+    @Mapping(target = "learner", ignore = true)
     @Mapping(target = "encounters", ignore = true)
+    VocabularySourceDto toDto(VocabularySource vocabularySource);
+    @Mapping(target = "learner", ignore = true)
+    @Mapping(target = "encounters", ignore = true)
+    VocabularySource toEntity(VocabularySourceDto vocabularySourceDto);
+
+    @Mapping(target = "vocabulary", ignore = true)
     @Mapping(target = "lexeme", ignore = true)
+    @Mapping(target = "encounters", ignore = true)
+    @Mapping(target = "meanings", ignore = true)
     void updateEntityFromDto(VocabularyEntryDto vocabularyEntryDto, @MappingTarget VocabularyEntry existingVocabularyEntry);
 
     @Mapping(target = "entry", ignore = true)
     @Mapping(target = "wordForm", ignore = true)
+    @Mapping(target = "source", ignore = true)
     void updateEntityFromDto(VocabularyEncounterDto vocabularyEncounterDto, @MappingTarget VocabularyEncounter existingVocabularyEncounter);
 }
