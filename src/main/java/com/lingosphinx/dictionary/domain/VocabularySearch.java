@@ -1,17 +1,16 @@
 package com.lingosphinx.dictionary.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class VocabularySearch {
+    private LanguageCode language;
     private String term;
-    private List<VocabularyEntry> entries;
+    private List<VocabularySearchHit> hits;
 }

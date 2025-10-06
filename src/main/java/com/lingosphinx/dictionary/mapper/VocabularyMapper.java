@@ -2,8 +2,10 @@ package com.lingosphinx.dictionary.mapper;
 
 import com.lingosphinx.dictionary.domain.Vocabulary;
 import com.lingosphinx.dictionary.domain.VocabularyEntry;
+import com.lingosphinx.dictionary.domain.VocabularyLearner;
 import com.lingosphinx.dictionary.dto.VocabularyDto;
 import com.lingosphinx.dictionary.dto.VocabularyEntryDto;
+import com.lingosphinx.dictionary.dto.VocabularyLearnerDto;
 import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -13,6 +15,11 @@ import org.mapstruct.MappingTarget;
 public interface VocabularyMapper {
     VocabularyDto toDto(Vocabulary vocabulary);
     Vocabulary toEntity(VocabularyDto vocabularyDto);
+
+    @Mapping(target = "vocabularies", ignore = true)
+    VocabularyLearnerDto toDto(VocabularyLearner vocabularyLearner);
+    @Mapping(target = "vocabularies", ignore = true)
+    VocabularyLearner toEntity(VocabularyLearnerDto vocabularyLearnerDto);
 
     @Mapping(target = "vocabulary", ignore = true)
     VocabularyEntryDto toDto(VocabularyEntry vocabularyEntry);

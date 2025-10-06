@@ -54,7 +54,7 @@ public class VocabularyServiceImpl implements VocabularyService {
         var existingVocabulary = vocabularyRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Vocabulary not found"));
         vocabularyMapper.updateEntityFromDto(vocabularyDto, existingVocabulary);
-        EntitySyncUtils.syncChildEntities(existingVocabulary.getEntries(), vocabularyDto.getTranslations(),
+        EntitySyncUtils.syncChildEntities(existingVocabulary.getEntries(), vocabularyDto.getEntries(),
                 VocabularyEntry::getId,
                 VocabularyEntryDto::getId,
                 vocabularyMapper::toEntity,

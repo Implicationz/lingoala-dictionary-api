@@ -1,24 +1,18 @@
 package com.lingosphinx.dictionary.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(
         uniqueConstraints = @UniqueConstraint(columnNames = {"lexeme_id", "form_id"})
 )
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class WordForm {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+public class WordForm extends BaseEntity {
 
     @ManyToOne(optional = false)
     private Lexeme lexeme;

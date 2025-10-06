@@ -14,5 +14,5 @@ import java.util.List;
 public class DictionarySearchDto {
     private DictionaryDto dictionary;
     private String term;
-    private List<DictionaryHeadwordDto> headwords;
+    private List<DictionarySearchHitDto> hits;
 }

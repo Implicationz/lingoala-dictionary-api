@@ -20,5 +20,5 @@ public class VocabularyDto {
     private String content;
     private String tokenization;
     private String transliteration;
-    private List<VocabularyEntryDto> translations;
+    private List<VocabularyEntryDto> entries;
 }

@@ -1,13 +1,7 @@
 package com.lingosphinx.dictionary.mapper;
 
-import com.lingosphinx.dictionary.domain.Dictionary;
-import com.lingosphinx.dictionary.domain.DictionaryEntry;
-import com.lingosphinx.dictionary.domain.DictionaryHeadwordImport;
-import com.lingosphinx.dictionary.domain.DictionarySense;
-import com.lingosphinx.dictionary.dto.DictionaryDto;
-import com.lingosphinx.dictionary.dto.DictionaryEntryDto;
-import com.lingosphinx.dictionary.dto.DictionaryHeadwordImportDto;
-import com.lingosphinx.dictionary.dto.DictionarySenseDto;
+import com.lingosphinx.dictionary.domain.*;
+import com.lingosphinx.dictionary.dto.*;
 import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -32,4 +26,9 @@ public interface DictionaryHeadwordImportMapper {
     DictionarySenseDto toDto(DictionarySense dictionarySense);
     @Mapping(target = "entry", ignore = true)
     DictionarySense toEntity(DictionarySenseDto dictionarySenseDto);
+
+    @Mapping(target = "lexeme", ignore = true)
+    WordFormDto toDto(WordForm wordForm);
+    @Mapping(target = "lexeme", ignore = true)
+    WordForm toEntity(WordFormDto wordFormDto);
 }

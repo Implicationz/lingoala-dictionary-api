@@ -84,7 +84,7 @@ public class DictionaryHeadwordImportServiceImpl implements DictionaryHeadwordIm
         lexeme.setPartOfSpeech(partOfSpeech);
         lexeme.setWordForms(
                 lexeme.getWordForms().stream()
-                        .map(this::processWordForm)
+                        .map((wordForm) -> processWordForm(lexeme, wordForm))
                         .toList()
         );
         return lexemeRepository.save(lexeme);
@@ -102,12 +102,13 @@ public class DictionaryHeadwordImportServiceImpl implements DictionaryHeadwordIm
                 .orElseGet(() -> partOfSpeechRepository.save(pos));
     }
 
-    private WordForm processWordForm(WordForm wordForm) {
+    private WordForm processWordForm(Lexeme lexeme, WordForm wordForm) {
         var word = processWord(wordForm.getWord());
         var form = processForm(wordForm.getForm());
+        wordForm.setLexeme(lexeme);
         wordForm.setWord(word);
         wordForm.setForm(form);
-        return wordFormRepository.save(wordForm);
+        return wordForm;
     }
 
     private Form processForm(Form form) {

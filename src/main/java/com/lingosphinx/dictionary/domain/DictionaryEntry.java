@@ -1,10 +1,8 @@
 package com.lingosphinx.dictionary.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.BatchSize;
 
 import java.util.List;
@@ -13,15 +11,12 @@ import java.util.List;
 @Table(
         uniqueConstraints = @UniqueConstraint(columnNames = {"headword_id", "lexeme_id"})
 )
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class DictionaryEntry {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+@SuperBuilder
+public class DictionaryEntry extends BaseEntity {
 
     @ManyToOne(optional = false)
     private DictionaryHeadword headword;

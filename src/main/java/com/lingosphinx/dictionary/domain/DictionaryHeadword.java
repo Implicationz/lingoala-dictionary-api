@@ -1,10 +1,8 @@
 package com.lingosphinx.dictionary.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.BatchSize;
 
 import java.util.List;
@@ -16,15 +14,12 @@ import java.util.List;
             @Index(name = "idx_dictionary_title", columnList = "dictionary_id, title")
         }
 )
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class DictionaryHeadword {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+@SuperBuilder
+public class DictionaryHeadword extends BaseEntity {
 
     @ManyToOne(optional = false)
     private Dictionary dictionary;

@@ -1,5 +1,6 @@
 package com.lingosphinx.dictionary.dto;
 
+import com.lingosphinx.dictionary.domain.LanguageCode;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class VocabularySearchDto {
+    private LanguageCode language;
     private String term;
-    private List<VocabularyEntryDto> entries;
+    private List<VocabularySearchHitDto> hits;
 }
